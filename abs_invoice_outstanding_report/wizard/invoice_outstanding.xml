@@ -27,7 +27,6 @@
         <record id="open_outstanding_invoice_action" model="ir.actions.act_window">
             <field name="name">Select Invoice Date to print Customer Paid Invoices</field>
             <field name="res_model">invoice.outstanding</field>
-            <field name="view_type">form</field>
             <field name="view_mode">form</field>
             <field name="target">new</field>
             <field name="view_id" ref="view_outstanding_invoice_form"/>
