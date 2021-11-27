@@ -28,7 +28,7 @@ class InvoiceOutstanding(models.TransientModel):
     end_date = fields.Date(string='To Date', required='1', help='select end date')
     total_amount_due = fields.Integer(string='Total Outstanding Amount')
 
-    @api.multi
+
     def check_report(self):
         data = {}
         data['form'] = self.read(['start_date', 'end_date'])[0]
