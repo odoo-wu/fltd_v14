@@ -27,7 +27,7 @@ from odoo.exceptions import UserError
 class ReportInvoices(models.AbstractModel):
     _name = 'report.abs_invoice_outstanding_report.invoice_outstanding'
 
-    @api.multi
+
     def _get_report_base_filename(self):
         self.ensure_one()
         docs = self.env[self.model].browse(self.env.context.get('active_id'))
