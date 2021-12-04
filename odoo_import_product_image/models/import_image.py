@@ -224,6 +224,8 @@ class bi_import_product_image(models.Model):
         sheet = workbook.sheet_by_index(0)
         for row_no in range(sheet.nrows):
             val = {}
+            _logger.error(_('comtinue//////////////////----------- !+++++++++++++++++++++++'+int(self.index)))
+            _logger.error(_('comtinue///////////////************* !+++++++++++++++++++++++'+row_no))
             if int(self.index)>row_no:
                 _logger.error(_('comtinue----------- !+++++++++++++++++++++++'+int(self.index)))
                 _logger.error(_('comtinue************* !+++++++++++++++++++++++'+row_no))
