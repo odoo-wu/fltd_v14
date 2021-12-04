@@ -267,7 +267,7 @@ class bi_import_product_image(models.Model):
 
                         if prod_search:
                             prod_search.write({'datas': f,})
-                            self.cr.commit()
+                            self.env.cr.commit()
 
 
 
