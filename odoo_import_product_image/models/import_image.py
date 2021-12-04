@@ -247,27 +247,27 @@ class bi_import_product_image(models.Model):
                                 thumbnail = base64.b64encode(adjunto_link.data)
                                 f = thumbnail
                             except:
-                                _logger.error(_('Please provide correct URL for image !'))
+                                _logger.error(_('Please provide correct URL for image !+++++++++++++++++++++++'))
                         else:
                             try:
                                 with open(values.get('url'), 'rb') as f:
                                     adjunto = base64.b64encode(f.read())
                                     f = adjunto
                             except IOError:
-                                _logger.error(_('Could not find the image please make sure it is accessible !')+values.get('url'))
+                                _logger.error(_('Could not find the image please make sure it is accessible !++++++++++++++++++++++++++++')+values.get('url'))
                     else:
                         f = False
 
                 if self.update_by == 'name':
                         if not values.get('name'):
-                            _logger.error(_('Name does not found in Excel'))
+                            _logger.error(_('Name does not found in Excel+++++++++++++++++'))
                         else:
                             prod_search =self.env['ir.attachment'].search([('name', '=', values.get('name'))])
 
 
                         if prod_search:
                             prod_search.write({'datas': f,})
-                            _logger.error('Importado !'+str(row_no))
+                            self.cr.commit()
 
 
 
