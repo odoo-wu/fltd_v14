@@ -225,7 +225,7 @@ class bi_import_product_image(models.Model):
         for row_no in range(sheet.nrows):
             val = {}
             if int(self.index)>row_no:
-                continue
+                self.index=row_no
             if row_no <= 0:
                 fields = map(lambda row: row.value.encode('utf-8'), sheet.row(row_no))
             else:
