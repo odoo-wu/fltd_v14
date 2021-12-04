@@ -225,7 +225,8 @@ class bi_import_product_image(models.Model):
         for row_no in range(sheet.nrows):
             val = {}
             if int(self.index)>row_no:
-                _logger.error(_('comtinue----------- !+++++++++++++++++++++++'))
+                _logger.error(_('comtinue----------- !+++++++++++++++++++++++'+int(self.index)))
+                _logger.error(_('comtinue************* !+++++++++++++++++++++++'+row_no))
                 continue
             if row_no <= 0:
                 fields = map(lambda row: row.value.encode('utf-8'), sheet.row(row_no))
