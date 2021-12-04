@@ -1,5 +1,5 @@
 # Part of BrowseInfo. See LICENSE file for full copyright and licensing details.
-
+from docutils.nodes import row
 from odoo.exceptions import Warning
 from odoo import models, fields, api, _
 import tempfile
@@ -33,6 +33,7 @@ class bi_import_product_image(models.Model):
                                  required=True)
     file = fields.Binary('Select Excel File', required=True)
     update_by = fields.Selection([('id', 'ID'), ('name', 'Name'), ('code', 'Code')], string='Update By', default='name')
+    index = fields.Char(string="Index", required=False, )
 
     def import_image(self):
         fp = tempfile.NamedTemporaryFile(delete=False, suffix=".xlsx")
@@ -223,6 +224,8 @@ class bi_import_product_image(models.Model):
         sheet = workbook.sheet_by_index(0)
         for row_no in range(sheet.nrows):
             val = {}
+            if self.index>row_no:
+                continue
             if row_no <= 0:
                 fields = map(lambda row: row.value.encode('utf-8'), sheet.row(row_no))
             else:
@@ -267,6 +270,7 @@ class bi_import_product_image(models.Model):
 
                         if prod_search:
                             prod_search.write({'datas': f,})
+                            _logger.error(_('Importado +++++++++++++++++'+str(row_no)))
                             self.env.cr.commit()
 
 

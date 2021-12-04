@@ -25,6 +25,7 @@
                                 </group>
                                 <group>
                                     <field name="operation"/>
+                                    <field name="index"/>
                                 </group>
 
                                 <group>
